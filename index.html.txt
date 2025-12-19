@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design by Simona - Digital Store</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
+        header { background: #2c3e50; color: #fff; padding: 20px; text-align: center; }
+        nav { background: #34495e; padding: 10px; text-align: center; }
+        nav a { color: #fff; margin: 0 15px; text-decoration: none; font-weight: bold; }
+        .container { padding: 20px; max-width: 1000px; margin: auto; }
+        .product-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        .product-card { background: #fff; border: 1px solid #ddd; padding: 15px; width: 250px; text-align: center; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .price { color: #e74c3c; font-weight: bold; font-size: 1.2em; }
+        footer { text-align: center; padding: 20px; background: #2c3e50; color: #fff; margin-top: 20px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: #fff; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #34495e; color: white; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Design by Simona</h1>
+    <p>Premium Digital Assets & Custom Designs</p>
+</header>
+
+<nav>
+    <a href="#templates">Шаблони</a>
+    <a href="#logos">Лога</a>
+    <a href="#custom">По поръчка</a>
+    <a href="#contact">Контакти</a>
+</nav>
+
+<div class="container">
+    
+    <section id="templates">
+        <h2>Уеб Шаблони (Website Templates)</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <h3>Minimal Portfolio</h3>
+                <p>Чист и модерен дизайн.</p>
+                <p class="price">20 лв.</p>
+                <button>Виж повече</button>
+            </div>
+            <div class="product-card">
+                <h3>E-commerce Store</h3>
+                <p>Готов за онлайн магазин.</p>
+                <p class="price">25 лв.</p>
+                <button>Виж повече</button>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <section id="logos">
+        <h2>Дизайн на Лога (Logo Designs)</h2>
+        <table border="1">
+            <tr>
+                <th>Пакет</th>
+                <th>Какво включва</th>
+                <th>Цена</th>
+            </tr>
+            <tr>
+                <td>Basic Logo</td>
+                <td>1 концепция, PNG формат</td>
+                <td>30.00 лв.</td>
+            </tr>
+            <tr>
+                <td>Pro Logo</td>
+                <td>3 концепции, векторни файлове</td>
+                <td>70.00 лв.</td>
+            </tr>
+        </table>
+    </section>
+
+    <hr>
+
+    <section id="contact">
+        <h2>Направи поръчка</h2>
+        <p>Имаш нужда от нещо специфично? Пиши ми!</p>
+        <form>
+            <label>Име:</label><br>
+            <input type="text" placeholder="Твоето име"><br><br>
+            
+            <label>Тип услуга:</label><br>
+            <select name="service">
+                <option>Лого</option>
+                <option>Уеб дизайн</option>
+                <option>Друго</option>
+            </select><br><br>
+            
+            <label>Съобщение:</label><br>
+            <textarea rows="5" cols="40" placeholder="Опиши проекта си..."></textarea><br><br>
+            
+            <input type="submit" value="Изпрати запитване">
+        </form>
+    </section>
+
+</div>
+
+<footer>
+    <p>&copy; 2025 Design by Simona. Всички права запазени.</p>
+    <p>Свържи се с мен: <a href="mailto:simonatacheva16@gmail.com" style="color: #fff;">simonatacheva16@gmail.com</a></p>
+</footer>
+
+</body>
+</html>
