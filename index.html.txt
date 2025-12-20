@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PREMIER DESIGN | Luxury Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --gold: #D4AF37; --dark: #050505; --bordox: #4d0000; --glass: rgba(255,255,255,0.05); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--dark); color: white; font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+
+        /* Navigation */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 20px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(5, 5, 5, 0.95); z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        .brand { font-family: 'Cinzel Decorative'; color: var(--gold); font-size: 1.8em; cursor: pointer; }
+
+        /* Hero Section */
+        .hero { height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(#2b0000, #050505); }
+        .hero h1 { font-family: 'Cinzel Decorative'; font-size: 4em; color: var(--gold); margin-bottom: 10px; }
+
+        /* Sections Management */
+        .content-section { display: none; padding: 100px 5%; max-width: 1400px; margin: auto; }
+        .active-section { display: block; }
+
+        /* Main Grid (As per your screenshot) */
+        .luxury-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .lux-card {
+            background: var(--glass); border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 50px 30px; text-align: center; transition: 0.4s; border-radius: 5px;
+        }
+        .lux-card:hover { border-color: var(--gold); transform: translateY(-10px); background: rgba(77,0,0,0.2); }
+        .lux-card i { font-size: 3em; color: var(--gold); margin-bottom: 25px; }
+        .lux-card h3 { font-size: 1.8em; margin-bottom: 20px; }
+        .price { font-size: 2.5em; font-weight: 800; display: block; margin: 20px 0; }
+
+        /* Gallery Grid */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; }
+        .design-item { 
+            height: 350px; background: #111; border: 1px solid #222; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: 0.3s;
+        }
+        .design-item:hover { border-color: var(--gold); }
+
+        /* Buttons */
+        .btn {
+            display: inline-block; padding: 12px 30px; border: 1px solid var(--gold);
+            color: var(--gold); text-decoration: none; font-weight: bold; cursor: pointer;
+            background: transparent; text-transform: uppercase; letter-spacing: 2px;
+        }
+        .btn:hover { background: var(--gold); color: black; }
+        .back-btn { margin-bottom: 30px; font-size: 0.8em; opacity: 0.7; }
+
+        footer { padding: 50px; text-align: center; border-top: 1px solid rgba(212,175,55,0.1); margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="brand" onclick="showSection('main-store')">PREMIER DESIGN</div>
+    <div style="color:var(--gold); font-size: 1.5em;"><i class="fas fa-bars"></i></div>
+</nav>
+
+<div id="main-store" class="content-section active-section">
+    <div style="text-align: center; margin-top: 80px;">
+        <h2 style="color:var(--gold); font-size: 3em; font-family:'Cinzel Decorative';">Luxury Packages</h2>
+        <div style="width: 50px; height: 2px; background: var(--gold); margin: 20px auto;"></div>
+    </div>
+
+    <div class="luxury-grid">
+        <div class="lux-card">
+            <i class="fas fa-crown"></i>
+            <h3>Signature Logo</h3>
+            <p>3 concepts, vector formats, and full commercial rights.</p>
+            <span class="price">35<span>BGN</span></span>
+            <button class="btn" onclick="showSection('logo-gallery')">Explore</button>
+        </div>
+
+        <div class="lux-card">
+            <i class="fas fa-gem"></i>
+            <h3>Branding Identity</h3>
+            <p>Logo, business cards, and professional brand guide.</p>
+            <span class="price">80<span>BGN</span></span>
+            <button class="btn" onclick="showSection('branding-gallery')">Order Now</button>
+        </div>
+
+        <div class="lux-card">
+            <i class="fas fa-magic"></i>
+            <h3>Digital Store</h3>
+            <p>Social media kits, planners, and custom assets.</p>
+            <span class="price">25<span>BGN</span></span>
+            <button class="btn" onclick="showSection('planner-gallery')">Explore</button>
+        </div>
+    </div>
+</div>
+
+<div id="logo-gallery" class="content-section">
+    <button class="btn back-btn" onclick="showSection('main-store')">← Back to Services</button>
+    <h2 style="font-family:'Cinzel Decorative'; color:var(--gold);">Logo Portfolio</h2>
+    <div class="gallery-grid">
+        <div class="design-item"><i class="fas fa-image fa-3x" style="opacity:0.2"></i><p>Your Logo 1</p></div>
+        <div class="design-item"><i class="fas fa-image fa-3x" style="opacity:0.2"></i><p>Your Logo 2</p></div>
+        <div class="design-item"><i class="fas fa-image fa-3x" style="opacity:0.2"></i><p>Your Logo 3</p></div>
+    </div>
+    <div style="margin-top:50px; text-align:center;">
+        <a href="mailto:simonatacheva16@gmail.com?subject=Order: Custom Logo" class="btn">Purchase Signature Logo - 35 BGN</a>
+    </div>
+</div>
+
+<div id="planner-gallery" class="content-section">
+    <button class="btn back-btn" onclick="showSection('main-store')">← Back to Services</button>
+    <h2 style="font-family:'Cinzel Decorative'; color:var(--gold);">Digital Planners</h2>
+    <div class="gallery-grid">
+        <div class="design-item"><i class="fas fa-calendar-alt fa-3x" style="opacity:0.2"></i><p>Daily Planner</p></div>
+        <div class="design-item"><i class="fas fa-book fa-3x" style="opacity:0.2"></i><p>Business Tracker</p></div>
+    </div>
+    <div style="margin-top:50px; text-align:center;">
+        <a href="mailto:simonatacheva16@gmail.com?subject=Order: Digital Planner" class="btn">Buy Planner - 25 BGN</a>
+    </div>
+</div>
+
+<div id="branding-gallery" class="content-section">
+    <button class="btn back-btn" onclick="showSection('main-store')">← Back to Services</button>
+    <h2 style="font-family:'Cinzel Decorative'; color:var(--gold);">Full Branding Package</h2>
+    <p style="margin: 20px 0; color:#aaa;">Everything you need for a world-class brand presence.</p>
+    <div class="lux-card" style="max-width: 600px; margin: auto;">
+        <ul style="text-align: left; line-height: 2.5; margin-bottom: 30px;">
+            <li><i class="fas fa-check" style="color:var(--gold)"></i> 3 Concept Logo Designs</li>
+            <li><i class="fas fa-check" style="color:var(--gold)"></i> Double-sided Business Cards</li>
+            <li><i class="fas fa-check" style="color:var(--gold)"></i> Professional Brand Style Guide</li>
+            <li><i class="fas fa-check" style="color:var(--gold)"></i> Social Media Kit</li>
+        </ul>
+        <span class="price">80<span>BGN</span></span>
+        <a href="mailto:simonatacheva16@gmail.com?subject=Order: Full Branding Identity" class="btn">Order Full Package</a>
+    </div>
+</div>
+
+<footer>
+    <p style="color:var(--gold); font-family:'Cinzel Decorative';">Premier Design Studio</p>
+    <p style="opacity:0.5; font-size: 0.8em; margin-top:10px;">&copy; 2025 Simona Tacheva. World Class Digital Assets.</p>
+</footer>
+
+<script>
+    function showSection(sectionId) {
+        // Hide all sections
+        const sections = document.querySelectorAll('.content-section');
+        sections.forEach(section => {
+            section.classList.remove('active-section');
+        });
+        
+        // Show the selected section
+        document.getElementById(sectionId).classList.add('active-section');
+        
+        // Scroll to top
+        window.scrollTo(0, 0);
+    }
+</script>
+
+</body>
+</html>
