@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PREMIER DESIGN | Luxury Store</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bordox: #4d0000; /* Дълбоко Бордо */
+            --gold-gradient: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fcf6ba, #aa771c);
+            --gold: #D4AF37;
+            --glass: rgba(255, 255, 255, 0.07);
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: var(--bordox); 
+            color: #fff; 
+            font-family: 'Montserrat', sans-serif; 
+            line-height: 1.6;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 15px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(40, 0, 0, 0.95); z-index: 1000;
+            border-bottom: 1px solid var(--gold);
+        }
+        .logo-text { 
+            font-family: 'Cinzel Decorative'; 
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.5rem; cursor: pointer;
+        }
+
+        .nav-icons { display: flex; gap: 20px; align-items: center; }
+        .cart-icon { position: relative; cursor: pointer; font-size: 1.3rem; color: var(--gold); }
+        .cart-badge { 
+            position: absolute; top: -8px; right: -8px; 
+            background: #fff; color: var(--bordox); 
+            font-size: 10px; width: 18px; height: 18px; 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;
+        }
+
+        /* --- SIDE MENU --- */
+        .side-menu {
+            position: fixed; top: 0; right: -100%; width: 320px; height: 100%;
+            background: #2a0000; z-index: 2000; transition: var(--transition);
+            padding: 50px 30px; border-left: 2px solid var(--gold);
+        }
+        .side-menu.active { right: 0; }
+        .close-btn { position: absolute; top: 20px; right: 20px; font-size: 2rem; color: var(--gold); cursor: pointer; }
+
+        /* --- CONTENT SECTIONS --- */
+        .container { padding: 100px 5% 50px; max-width: 1400px; margin: 0 auto; }
+        .section-title { 
+            text-align: center; font-family: 'Cinzel Decorative'; 
+            color: var(--gold); margin: 40px 0 20px; font-size: 2rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3); display: inline-block; width: 100%;
+        }
+
+        /* --- GRID SYSTEM (16 BLOCKS) --- */
+        .grid-16 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .card {
+            background: var(--glass); border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 30px; border-radius: 10px; text-align: center;
+            transition: var(--transition); position: relative;
+        }
+        .card:hover { transform: translateY(-10px); border-color: var(--gold); background: rgba(255,255,255,0.1); }
+        .card h3 { color: var(--gold); margin-bottom: 15px; font-family: 'Cinzel Decorative'; font-size: 1.1rem; }
+        .price { font-size: 1.5rem; display: block; margin: 15px 0; font-weight: bold; }
+
+        .btn-explore {
+            background: transparent; border: 1px solid var(--gold); color: var(--gold);
+            padding: 8px 20px; cursor: pointer; transition: 0.3s; margin-bottom: 10px; width: 100%;
+        }
+        .btn-explore:hover { background: var(--gold); color: #000; }
+
+        .btn-add {
+            background: var(--gold-gradient); border: none; color: #000;
+            padding: 10px 20px; font-weight: bold; cursor: pointer; width: 100%;
+        }
+
+        /* --- FOOTER/CONTACTS IN MENU --- */
+        .menu-link { display: block; color: #fff; text-decoration: none; margin: 15px 0; font-size: 1.1rem; }
+        .menu-link i { color: var(--gold); margin-right: 10px; }
+        .calendar-widget { background: rgba(0,0,0,0.3); padding: 15px; border-radius: 5px; margin-top: 20px; }
+
+        /* --- PAGE DISPLAY --- */
+        .page { display: none; }
+        .active-page { display: block; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo-text" onclick="showPage('home')">PREMIER DESIGN</div>
+        <div class="nav-icons">
+            <div class="cart-icon" onclick="showPage('cart')">
+                <i class="fas fa-shopping-bag"></i>
+                <div class="cart-badge" id="cartCount">0</div>
+            </div>
+            <div onclick="toggleMenu()" style="cursor:pointer;"><i class="fas fa-bars fa-lg" style="color:var(--gold)"></i></div>
+        </div>
+    </nav>
+
+    <div class="side-menu" id="sideMenu">
+        <div class="close-btn" onclick="toggleMenu()">&times;</div>
+        <h2 class="logo-text" style="font-size: 1.2rem; margin-bottom: 30px;">КОНТАКТИ</h2>
+        <a href="https://instagram.com" class="menu-link"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="https://tiktok.com" class="menu-link"><i class="fab fa-tiktok"></i> TikTok</a>
+        <a href="mailto:simonatacheva16@gmail.com" class="menu-link"><i class="fas fa-envelope"></i> Работен Имейл</a>
+        
+        <h2 class="logo-text" style="font-size: 1.2rem; margin: 40px 0 20px;">КАЛЕНДАР & ТОМБОЛИ</h2>
+        <div class="calendar-widget">
+            <p style="color:var(--gold); font-weight:bold;">🎄 25 ДЕКЕМВРИ</p>
+            <p style="font-size:0.8rem;">Коледна Томбола! Условие: Последвай ни в Instagram и тагни приятел.</p>
+        </div>
+    </div>
+
+    <div id="home" class="page active-page container">
+        
+        <h2 class="section-title">Училищни Пакети</h2>
+        <div class="grid-16">
+            <script>
+                const eduItems = [
+                    {n: "Стандартна Презентация", p: 15, i: "fa-chalkboard"},
+                    {n: "Училищен Проект Плюс", p: 25, i: "fa-graduation-cap"},
+                    {n: "Дизайн на Грамоти", p: 10, i: "fa-certificate"},
+                    {n: "Сертификат за Курс", p: 12, i: "fa-award"},
+                    {n: "Училищен Планер", p: 20, i: "fa-book-open"},
+                    {n: "Пакет: Презентация + Грамота", p: 30, i: "fa-layer-group"},
+                    {n: "Тематичен Учебен Дизайн", p: 18, i: "fa-palette"},
+                    {n: "Етикет за Тетрадки", p: 5, i: "fa-tags"}
+                ];
+                eduItems.forEach(item => {
+                    document.write(`
+                        <div class="card">
+                            <i class="fas ${item.i} fa-2x" style="color:var(--gold)"></i>
+                            <h3>${item.n}</h3>
+                            <button class="btn-explore">Explore</button>
+                            <span class="price">${item.p} BGN</span>
+                            <button class="btn-add" onclick="addToCart('${item.n}', ${item.p})">Добави в пакета</button>
+                        </div>
+                    `);
+                });
+            </script>
+        </div>
+
+        <h2 class="section-title">Бизнес & Digital Store</h2>
+        <div class="grid-16">
+            <script>
+                const bizItems = [
+                    {n: "Signature Logo", p: 35, i: "fa-pen-nib"},
+                    {n: "Бизнес Брошура", p: 40, i: "fa-file-pdf"},
+                    {n: "Поздравителна Картичка", p: 10, i: "fa-envelope-open-text"},
+                    {n: "Vlog Branding Kit", p: 50, i: "fa-video"},
+                    {n: "Social Media Шаблони", p: 25, i: "fa-mobile-alt"},
+                    {n: "Бизнес Пакет (Лого + 3 През)", p: 80, i: "fa-gem"},
+                    {n: "Корпоративни Документи", p: 30, i: "fa-briefcase"},
+                    {n: "Digital Planner 2024", p: 20, i: "fa-calendar-alt"}
+                ];
+                bizItems.forEach(item => {
+                    document.write(`
+                        <div class="card">
+                            <i class="fas ${item.i} fa-2x" style="color:var(--gold)"></i>
+                            <h3>${item.n}</h3>
+                            <button class="btn-explore">Explore</button>
+                            <span class="price">${item.p} BGN</span>
+                            <button class="btn-add" onclick="addToCart('${item.n}', ${item.p})">Добави в пакета</button>
+                        </div>
+                    `);
+                });
+            </script>
+        </div>
+    </div>
+
+    <div id="cart" class="page container">
+        <h2 class="section-title">Твоят Персонализиран Пакет</h2>
+        <div id="cartDisplay" style="background: rgba(0,0,0,0.2); padding: 20px; border-radius: 10px;">
+            </div>
+        <div id="cartTotal" style="text-align: right; margin-top: 20px; font-size: 1.5rem; color: var(--gold);"></div>
+        <button class="btn-add" style="margin-top:20px; max-width: 300px;">Продължи към плащане</button>
+    </div>
+
+    <script>
+        let cart = [];
+
+        function toggleMenu() {
+            const menu = document.getElementById('sideMenu');
+            menu.classList.toggle('active');
+        }
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
+            document.getElementById(pageId).classList.add('active-page');
+            document.getElementById('sideMenu').classList.remove('active');
+            window.scrollTo(0,0);
+        }
+
+        function addToCart(name, price) {
+            cart.push({name, price});
+            document.getElementById('cartCount').innerText = cart.length;
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const display = document.getElementById('cartDisplay');
+            const totalDisplay = document.getElementById('cartTotal');
+            
+            if(cart.length === 0) {
+                display.innerHTML = "<p>Количката е празна. Сформирай своя пакет сега!</p>";
+                totalDisplay.innerText = "";
+            } else {
+                display.innerHTML = cart.map((item, index) => `
+                    <div style="display:flex; justify-content:space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <span>${item.name}</span>
+                        <span>${item.price} BGN <i class="fas fa-times" onclick="removeItem(${index})" style="margin-left:15px; cursor:pointer; color:red;"></i></span>
+                    </div>
+                `).join('');
+                
+                const total = cart.reduce((sum, item) => sum + item.price, 0);
+                totalDisplay.innerText = Общо: ${total} BGN;
+            }
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            document.getElementById('cartCount').innerText = cart.length;
+            updateCartUI();
+        }
+    </script>
+
+</body>
+</html>
