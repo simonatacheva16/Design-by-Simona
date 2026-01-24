@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PREMIER DESIGN | Luxury Digital Store</title>
+    <meta name="description" content="Ексклузивни дизайни в Canva - презентации, лога, планери и покани. Изберете от нашите бюджетни, луксозни или премиум пакети. Работим и по индивидуални поръчки.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bordox: #4d0000;
+            --gold-gradient: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fcf6ba, #aa771c);
+            --gold: #D4AF37;
+            --glass: rgba(255, 255, 255, 0.07);
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bordox); color: #fff; font-family: 'Montserrat', sans-serif; line-height: 1.6; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 15px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(40, 0, 0, 0.95); z-index: 1000;
+            border-bottom: 1px solid var(--gold);
+        }
+        .logo-text { 
+            font-family: 'Cinzel Decorative'; 
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.5rem; cursor: pointer;
+        }
+
+        .nav-icons { display: flex; gap: 20px; align-items: center; }
+        .cart-icon { position: relative; cursor: pointer; font-size: 1.3rem; color: var(--gold); }
+        .cart-badge { 
+            position: absolute; top: -8px; right: -8px; 
+            background: #fff; color: var(--bordox); 
+            font-size: 10px; width: 18px; height: 18px; 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;
+        }
+
+        /* --- SIDE MENU --- */
+        .side-menu {
+            position: fixed; top: 0; right: -100%; width: 320px; height: 100%;
+            background: #2a0000; z-index: 2000; transition: var(--transition);
+            padding: 50px 30px; border-left: 2px solid var(--gold);
+        }
+        .side-menu.active { right: 0; }
+        .close-btn { position: absolute; top: 20px; right: 20px; font-size: 2rem; color: var(--gold); cursor: pointer; }
+
+        /* --- FILTER & CATEGORIES --- */
+        .controls {
+            margin-top: 120px; text-align: center; display: flex; flex-direction: column; gap: 15px; align-items: center;
+        }
+        select {
+            background: var(--glass); color: var(--gold); border: 1px solid var(--gold);
+            padding: 10px 20px; border-radius: 5px; font-family: 'Montserrat'; cursor: pointer;
+        }
+
+        /* --- SECTIONS --- */
+        .container { padding: 40px 5% 50px; max-width: 1400px; margin: 0 auto; }
+        .section-title { 
+            text-align: center; font-family: 'Cinzel Decorative'; 
+            color: var(--gold); margin: 40px 0 20px; font-size: 2rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3); display: block;
+        }
+        .custom-order-info {
+            background: rgba(212, 175, 55, 0.1); border: 1px solid var(--gold);
+            padding: 20px; border-radius: 10px; margin-bottom: 40px; text-align: center;
+        }
+
+        .grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px; margin-top: 30px;
+        }
+
+        .card {
+            background: var(--glass); border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 30px; border-radius: 10px; text-align: center;
+            transition: var(--transition);
+        }
+        .card:hover { transform: translateY(-10px); border-color: var(--gold); }
+        .card h3 { color: var(--gold); margin: 15px 0; font-family: 'Cinzel Decorative'; font-size: 1.1rem; }
+        .price { font-size: 1.5rem; display: block; margin: 15px 0; font-weight: bold; color: #fff; }
+
+        .btn-add {
+            background: var(--gold-gradient); border: none; color: #000;
+            padding: 12px 20px; font-weight: bold; cursor: pointer; width: 100%; border-radius: 5px;
+        }
+
+        /* --- FOOTER/CONTACTS --- */
+        .menu-link { display: block; color: #fff; text-decoration: none; margin: 20px 0; font-size: 1.1rem; }
+        .menu-link i { color: var(--gold); margin-right: 10px; }
+
+        .page { display: none; }
+        .active-page { display: block; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo-text" onclick="showPage('home')">PREMIER DESIGN</div>
+        <div class="nav-icons">
+            <div class="cart-icon" onclick="showPage('cart')">
+                <i class="fas fa-shopping-bag"></i>
+                <div class="cart-badge" id="cartCount">0</div>
+            </div>
+            <div onclick="toggleMenu()" style="cursor:pointer;"><i class="fas fa-bars fa-lg" style="color:var(--gold)"></i></div>
+        </div>
+    </nav>
+
+    <div class="side-menu" id="sideMenu">
+        <div class="close-btn" onclick="toggleMenu()">&times;</div>
+        <h2 class="logo-text" style="font-size: 1.2rem; margin-bottom: 30px;">СВЪРЖЕТЕ СЕ С МЕН</h2>
+        <a href="https://instagram.com/TVOETO_IME" target="_blank" class="menu-link"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="mailto:simonatacheva16@gmail.com" class="menu-link"><i class="fas fa-envelope"></i> Работен Имейл</a>
+        <hr style="border-color: var(--gold); opacity: 0.3;">
+        <p style="margin-top: 20px; font-size: 0.9rem; color: var(--gold);">*Работя и по индивидуални поръчки. Свържете се с мен за лимитирани серии!</p>
+    </div>
+
+    <div id="home" class="page active-page">
+        <div class="controls">
+            <h1 class="logo-text">Ексклузивни Canva Дизайни</h1>
+            <div class="custom-order-info">
+                <h3>💎 Персонализирани проекти по поръчка</h3>
+                <p>Предлагам изработка на лимитирани серии дизайни, съобразени изцяло с Вашите изисквания.</p>
+            </div>
+            <select id="priceFilter" onchange="filterProducts()">
+                <option value="all">Всички Цени</option>
+                <option value="cheap">Бюджетни (Евтини)</option>
+                <option value="expensive">Луксозни (Скъпи)</option>
+                <option value="premium">Премиум (Ексклузивни)</option>
+            </select>
+        </div>
+
+        <div class="container">
+            <h2 class="section-title">Училище & Образование</h2>
+            <div class="grid" id="schoolGrid"></div>
+
+            <h2 class="section-title">Бизнес & Работа</h2>
+            <div class="grid" id="businessGrid"></div>
+
+            <h2 class="section-title">Премиум Колекция</h2>
+            <div class="grid" id="premiumGrid"></div>
+        </div>
+    </div>
+
+    <div id="cart" class="page container" style="margin-top: 100px;">
+        <h2 class="section-title">Твоята Количка</h2>
+        <div id="cartDisplay" style="background: rgba(0,0,0,0.2); padding: 20px; border-radius: 10px;"></div>
+        <div id="cartTotal" style="text-align: right; margin-top: 20px; font-size: 1.5rem; color: var(--gold);"></div>
+        <button class="btn-add" style="margin-top:20px; max-width: 300px;" onclick="checkout()">Продължи към поръчка</button>
+    </div>
+
+    <script>
+        const products = [
+            // УЧИЛИЩЕ
+            { id: 1, cat: 'school', type: 'cheap', n: 'Шаблон за Грамота', p: 5, i: 'fa-certificate' },
+            { id: 2, cat: 'school', type: 'expensive', n: 'Училищна Презентация', p: 15, i: 'fa-chalkboard' },
+            { id: 3, cat: 'school', type: 'premium', n: 'Пълен Училищен Пакет', p: 40, i: 'fa-graduation-cap' },
+            
+            // БИЗНЕС
+            { id: 4, cat: 'business', type: 'cheap', n: 'Картичка / Покана', p: 8, i: 'fa-envelope' },
+            { id: 5, cat: 'business', type: 'expensive', n: 'Професионално Лого', p: 30, i: 'fa-pen-nib' },
+            { id: 6, cat: 'business', type: 'premium', n: 'Бизнес Брандинг Пакет', p: 85, i: 'fa-gem' },
+
+            // ПРЕМИУМ 
+            { id: 7, cat: 'premium', type: 'premium', n: 'Ексклузивен Планер ', p: 50, i: 'fa-book-open' },
+            { id: 8, cat: 'premium', type: 'premium', n: 'Дизайн на Смартфон Тапети ', p: 25, i: 'fa-mobile-alt' }
+        ];
+
+        let cart = [];
+
+        function renderProducts(filter = 'all') {
+            const grids = { school: 'schoolGrid', business: 'businessGrid', premium: 'premiumGrid' };
+            Object.values(grids).forEach(id => document.getElementById(id).innerHTML = '');
+
+            products.forEach(item => {
+                if (filter === 'all' || item.type === filter) {
+                    const gridId = grids[item.cat];
+                    document.getElementById(gridId).innerHTML += `
+                        <div class="card">
+                            <i class="fas ${item.i} fa-3x" style="color:var(--gold)"></i>
+                            <h3>${item.n}</h3>
+                            <span class="price">€${item.p.toFixed(2)}</span>
+                            <button class="btn-add" onclick="addToCart('${item.n}', ${item.p})">Добави в количката</button>
+                        </div>
+                    `;
+                }
+            });
+        }
+
+        function filterProducts() {
+            const val = document.getElementById('priceFilter').value;
+            renderProducts(val);
+        }
+
+        function toggleMenu() { document.getElementById('sideMenu').classList.toggle('active'); }
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
+            document.getElementById(pageId).classList.add('active-page');
+            if(pageId === 'home') renderProducts();
+            toggleMenu();
+        }
+
+        function addToCart(name, price) {
+            cart.push({name, price});
+            document.getElementById('cartCount').innerText = cart.length;
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const display = document.getElementById('cartDisplay');
+            const totalDisplay = document.getElementById('cartTotal');
+            if(cart.length === 0) {
+                display.innerHTML = "<p>Количката е празна.</p>";
+                totalDisplay.innerText = "";
+            } else {
+                display.innerHTML = cart.map((item, index) => `
+                    <div style="display:flex; justify-content:space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <span>${item.name}</span>
+                        <span>€${item.price.toFixed(2)} <i class="fas fa-trash" onclick="removeItem(${index})" style="margin-left:15px; cursor:pointer; color:var(--gold);"></i></span>
+                    </div>
+                `).join('');
+                const total = cart.reduce((sum, item) => sum + item.price, 0);
+                totalDisplay.innerText = `Общо: €${total.toFixed(2)}`;
+            }
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            document.getElementById('cartCount').innerText = cart.length;
+            updateCartUI();
+        }
+
+        function checkout() {
+            alert("Благодарим Ви! Свържете се с нас в Instagram или на Email ( nextlevelslides2026@gmail.com ), за да завършите плащането.");
+        }
+
+        // Първоначално зареждане
+        renderProducts();
+    </script>
+</body>
+</html>
